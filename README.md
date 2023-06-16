@@ -15,7 +15,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Link](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -68,15 +67,6 @@
 - **Test coverage**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-## 🚀 Live Link<a name="live-demo"></a>
-<!-- ADD LINK ON DEPLOY-->
-- [Live Link]()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ## 💻 Getting Started <a name="getting-started"></a>
