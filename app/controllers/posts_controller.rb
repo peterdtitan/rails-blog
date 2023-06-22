@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
+    @post = @user.posts.find_by(id: params[:id])
 
     return unless @post.nil?
 
