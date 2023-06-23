@@ -1,2 +1,7 @@
-<h1>Users</h1>
-<h3>Here is a list of users</h3>
+<div class="flex flex-col gap-2 items-center justify-center gap-12">
+  <% @users.each do |person| %>
+    <div class="flex flex-col items-center justify-center mt-8">
+      <%= render partial: "user", locals: {person: person} %>
+    </div>
+  <% end %>
+</div>

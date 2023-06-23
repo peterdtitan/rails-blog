@@ -1,0 +1,9 @@
+<div class="flex items-center justify-center">
+    <%= link_to user_path(person) do%>
+        <img class="" src=<%= person.photo %> alt="user photo">
+    <% end %>
+    <div class="">
+      <small class=""><%= link_to person.name, user_path(person) %></small>
+      <small class="">Number of posts: <%= person.posts_counter%></small>
+    </div>
+</div>

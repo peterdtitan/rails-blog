@@ -1,3 +1,18 @@
-<h1><%= @user.name %>'s Posts</h1>
+<%= render partial: "users/user", locals: {person: @user} %>
 
-<h2>All posts for this user</h2>
+<div class="posts-container">
+    <% @user.posts.each do |post| %>
+        <%= render partial: "users/posts", locals: {post: post} %>
+        <div class="">
+            <%  comments = post.recent_comments%>
+            <% comments.each do |comment| %>
+                <div class="">
+                    <small><%= comment.user.name%>: </small>
+                    <small><%= comment.text%> </small>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
+
+<button class="">Pagination</button>
