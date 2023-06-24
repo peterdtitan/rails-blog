@@ -2,11 +2,10 @@
   <%= render partial: "user", locals: {person: @user} %>
   <%posts = @user.recent_posts%>
   <div class="flex flex-col justify-between p-4 w-[500px] bg-blue-100 cursor-default rounded-md">
-    <p class="font-medium text-xl">BIO</p>
+    <p class="font-medium text-xl">Bio:</p>
     <p class="mt-4 italic text-sm"><%= @user.bio %></p>
   </div>
   
-  <%= render partial: "posts"%>
   <% posts.each do |post| %>
     <%= render partial: "posts", locals: {post: post} %>
   <% end %>
