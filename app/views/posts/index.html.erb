@@ -1,3 +1,17 @@
-<h1><%= @user.name %>'s Posts</h1>
-
-<h2>All posts for this user</h2>
+<div class="flex flex-col items-center justify-center gap-8">
+    <%= render partial: "users/user", locals: {person: @user} %>
+     <div class="posts-container">
+        <% @user.posts.each do |post| %>
+            <%= render partial: "users/posts", locals: {post: post} %>
+            <div class=" bg-blue-100 p-4 rounded-md -mt-2 flex flex-col gap-2">
+                <%  comments = post.recent_comments%>
+                <% comments.each do |comment| %>
+                    <p class="italic p-2 bg-slate-50 rounded-md">
+                      <span class="text-red-300 font-medium"><%= comment.user.name%></span>:&nbsp;
+                      <%= comment.text%> 
+                    </p>
+                <% end %>
+            </div>
+        <% end %>
+    </div> 
+</div>

@@ -1,3 +1,27 @@
-<h1>post title</h1>
-<h2>post content</h2>
-<h3>post comments</h3>
+<div class="flex items-center justify-center mt-12">
+   <div class="p-4 w-[500px] bg-blue-100 cursor-default rounded-md">
+      <div class="p-4 bg-slate-100 rounded-md items-center justify-center">
+        <div class="flex justify-between items-center">
+          <p class="font-medium text-xl"><%= "#{@post.title} by #{@user.name}" %></p>
+          <div class="flex gap-2 text-xs">
+            <small class="text-sm font-medium">Comments: <%= @post.comments_counter %></small>
+            <small class="text-sm font-medium">Likes: <%= @post.likes_counter %></small>
+          </div>
+        </div>
+  
+        <p class="mt-4 italic text-sm"><%= @post.text%></p>   
+      </div>
+      <div class="flex flex-col mt-2">
+        <% @post.comments.each do |comment| %>
+          <p class="italic p-2 bg-slate-50">
+            <span class="text-red-300 font-medium"><%= comment.user.name%></span>:&nbsp;
+            <%= comment.text%> 
+          </p>
+        <% end %>
+  </div>
+
+  <div class="mt-12 flex gap-2 items-center justify-center">
+    <%= link_to 'Back to All Users', users_path, class: 'p-2 rounded-md bg-blue-400 text-white hover:bg-blue-600' %>
+    <%= link_to 'Back to User Posts', user_posts_path(@user), class: 'p-2 rounded-md bg-blue-400 text-white hover:bg-blue-600' %>
+  </div>
+</div>
