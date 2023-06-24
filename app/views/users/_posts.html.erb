@@ -4,8 +4,12 @@
       <p class="mt-4 italic text-sm"><%= truncate(post.text, length: 100, omission: '...' ) %>
           
       <div class="flex gap-2 ml-[60%] mt-8">
-        <small class="text-sm font-medium">Comments: <%= post.comments_counter %></small>
-        <small class="text-sm font-medium">Likes: <%= post.likes_counter %></small>
+        <small class="text-sm font-medium">
+          <%= link_to "Comments: #{post.comments_counter}", user_post_path(@user, post) %>
+        </small>
+        <small class="text-sm font-medium">
+          <%= link_to "Likes: #{post.likes_counter}", user_post_likes_path(@user, post)%>
+        </small>
       </div>
     </div>
 </div> 
