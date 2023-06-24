@@ -5,7 +5,9 @@
           <p class="font-medium text-xl"><%= "#{@post.title} by #{@user.name}" %></p>
           <div class="flex gap-2 text-xs">
             <small class="text-sm font-medium">Comments: <%= @post.comments_counter %></small>
-            <small class="text-sm font-medium">Likes: <%= @post.likes_counter %></small>
+            <small class="text-sm font-medium">
+              <%= link_to "Likes: #{@post.likes_counter}", user_post_likes_path(@user, @post) %>
+            </small>
           </div>
         </div>
   
@@ -19,6 +21,12 @@
           </p>
         <% end %>
   </div>
+
+  <%= form_for([@user, @post, @post.comments.build]) do |f| %>
+    <%= f.label :text, class: "" %><br>
+    <%= f.text_area :text, class: "" %>
+    <%= f.submit "Create Comment", class: "" %>s
+  <% end %>
 
   <div class="mt-12 flex gap-2 items-center justify-center">
     <%= link_to 'Back to All Users', users_path, class: 'p-2 rounded-md bg-blue-400 text-white hover:bg-blue-600' %>
