@@ -1,4 +1,6 @@
-<div class="">
+<%
+=begin%>
+ <div class="">
   <small class=""><%= link_to post.title, user_post_path(@user, post) %></small>
   <p class="">
     <%= truncate(post.text, length: 100, omission: '...' ) %>
@@ -7,4 +9,15 @@
     <small>Comments: <%= post.comments_counter %></small>
     <small class="">Likes: <%= post.likes_counter %></small>
   </div>
+</div> 
+<%
+=end%>
+
+<div class="flex flex-col justify-between p-4 w-[500px] bg-blue-100 cursor-default rounded-md">
+    <p class="font-medium text-xl">Post 1</p>
+    <p class="mt-4 italic text-sm">Hello this is a sample post to test out the functionality of this rails app</p>
+    <div class="flex gap-2 ml-[60%] mt-8">
+      <small class="text-sm">Comments: 0</small>
+      <small class="text-sm">Likes: 0</small>
+    </div>
 </div>

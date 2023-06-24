@@ -1,18 +1,54 @@
-<%= render partial: "users/user", locals: {person: @user} %>
+<div class="flex flex-col items-center justify-center gap-8">
+    <%= render partial: "users/user", locals: {person: @user} %>
+    <%
+=begin%>
+ <%
+    =begin%>
+     <div class="posts-container">
+        <% @user.posts.each do |post| %>
+            <%= render partial: "users/posts", locals: {post: post} %>
+            <div class="">
+                <%  comments = post.recent_comments%>
+                <% comments.each do |comment| %>
+                    <div class="">
+                        <small><%= comment.user.name%>: </small>
+                        <small><%= comment.text%> </small>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div> 
+    <%
+    =end%> 
+<%
+=end%>
 
-<div class="posts-container">
-    <% @user.posts.each do |post| %>
-        <%= render partial: "users/posts", locals: {post: post} %>
+    <div class="flex flex-col justify-between p-4 w-[500px] bg-blue-100 gap-2 cursor-default rounded-md">
         <div class="">
-            <%  comments = post.recent_comments%>
-            <% comments.each do |comment| %>
-                <div class="">
-                    <small><%= comment.user.name%>: </small>
-                    <small><%= comment.text%> </small>
-                </div>
-            <% end %>
+            <p class="font-medium text-xl">Post 1</p>
+            <p class="mt-4 italic text-sm">Hello this is a sample post to test out the functionality of this rails app</p>
+            <div class="flex gap-2 ml-[60%] mt-8">
+              <small class="text-sm">Comments: 0</small>
+              <small class="text-sm">Likes: 0</small>
+            </div>
         </div>
-    <% end %>
-</div>
+        <div class="flex flex-col justify-between gap-2 mt-4 cursor-default rounded-md">
+            <p class="italic p-2 bg-slate-50 rounded-md">
+              <span class="text-red-300 font-medium">User 1</span>:&nbsp;
+              This is a sample comment from a random user here. I love rails too.
+            </p>
+            <p class="italic p-2 bg-slate-50 rounded-md">
+              <span class="text-red-300 font-medium">User 1</span>:&nbsp;
+              This is a sample comment from a random user here. I love rails too.
+            </p>
+            <p class="italic p-2 bg-slate-50 rounded-md">
+              <span class="text-red-300 font-medium">User 1</span>:&nbsp;
+              This is a sample comment from a random user here. I love rails too.
+            </p>
+        </div>
+    </div>
 
-<button class="">Pagination</button>
+    <button class="p-2 rounded-md bg-blue-500 text-white hover:bg-blue-700 transform hover:scale-110 transition-all duration-300 active:scale-90">
+      Pagination
+    </button>
+</div>
