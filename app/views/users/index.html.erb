@@ -1,12 +1,12 @@
-<div class="flex flex-col gap-2 items-center justify-center">
+<div class="flex flex-col gap-2 items-center justify-center mt-12">
   <% @users.each do |person| %>
-    <div class="flex items-center gap-10 mt-8 p-4 rounded-md bg-blue-100 hover:bg-blue-300 border-2 border-black cursor-pointer">
-      <div style="max-width: 100px; max-height: 100px;">
-        <img src="<%= person.photo %>" alt="User Photo" />
-      </div>
-      <div class="flex gap-8 ml-8">
-        <p><%= person.name %></p>
-        <p>Number of Posts: <%= person.posts_counter %></p>
+    <div class="flex items-center justify-center gap-10 mt-8 p-4 bg-blue-100 hover:bg-blue-400 cursor-pointer rounded-md
+      transform hover:scale-110 transition-all duration-300 active:scale-90"
+    >  
+      <img src="<%= person.photo %>" alt="User Photo" class="h-[120px] w-[120px]"/>
+      <div class="flex flex-col h-[120px] w-[300px] justify-between p-4 rounded-md bg-blue-200 border-1 border-black">
+        <p class="text-2xl font-medium"><%= person.name %></p>
+        <p class="ml-[50%] text-sm">Number of Posts: <%= person.posts_counter %></p>
       </div>
     </div>
   <% end %>
