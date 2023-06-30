@@ -36,6 +36,7 @@ end
 gem 'rails-controller-testing'
 
 group :development do
+  gem 'letter_opener'
   gem 'web-console'
 end
 
