@@ -8,12 +8,15 @@ class PostsController < ApplicationController
       .order(:post_id, created_at: :desc)
       .limit(5)
   end
+
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find_by(id: params[:id])
     return unless @post.nil?
+
     redirect_to user_posts_path(@user)
   end
+
   def create
     @user = User.find(params[:user_id])
     @post = @user.posts.build(post_params)
@@ -25,7 +28,9 @@ class PostsController < ApplicationController
       render :new
     end
   end
+
   private
+
   def post_params
     params.require(:post).permit(:title, :text)
   end
