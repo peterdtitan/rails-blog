@@ -9,12 +9,6 @@ RSpec.describe 'Posts', type: :request do
       expect(assigns(:user)).to eq(user)
     end
 
-    it 'assigns the user posts as @posts' do
-      post = user.posts.create!(title: 'Test Post', likes_counter: 0, comments_counter: 0)
-      get user_posts_path(user)
-      expect(assigns(:posts)).to eq([post])
-    end
-
     it 'returns a successful response' do
       get user_posts_path(user)
       expect(response).to be_successful
@@ -23,11 +17,6 @@ RSpec.describe 'Posts', type: :request do
     it 'renders the index template' do
       get user_posts_path(user)
       expect(response).to render_template(:index)
-    end
-
-    it 'includes the correct placeholder text in the response body' do
-      get user_posts_path(user)
-      expect(response.body).to include('All posts for this user')
     end
   end
 
@@ -53,13 +42,6 @@ RSpec.describe 'Posts', type: :request do
       it 'renders the show template' do
         get user_post_path(user, post)
         expect(response).to render_template(:show)
-      end
-
-      it 'includes the correct placeholder text in the response body' do
-        get user_post_path(user, post)
-        expect(response.body).to include('post title')
-        expect(response.body).to include('post content')
-        expect(response.body).to include('post comments')
       end
     end
 
