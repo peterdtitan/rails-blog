@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_initialize :set_default_posts_counter, if: :new_record?
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :posts, foreign_key: :author_id
@@ -12,5 +11,11 @@ class User < ApplicationRecord
 
   def recent_posts
     posts.order(created_at: :desc).limit(3)
+  end
+
+  private 
+
+  def set_default_posts_counter
+    self.posts_counter ||= 0
   end
 end
