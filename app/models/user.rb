@@ -13,7 +13,7 @@ class User < ApplicationRecord
     posts.order(created_at: :desc).limit(3)
   end
 
-  private 
+  private
 
   def set_default_posts_counter
     self.posts_counter ||= 0
