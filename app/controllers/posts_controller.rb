@@ -1,12 +1,20 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.page(params[:page]).per(2)
-    @recent_comments = Comment.where(post_id: @posts)
-      .includes(:user)
-      .select('DISTINCT ON (post_id) *')
-      .order(:post_id, created_at: :desc)
-      .limit(5)
+    per_page = 2
+    page = params[:page].to_i.positive? ? params[:page].to_i : 1
+    offset = (page - 1) * per_page
+
+    @posts = @user.posts.order(created_at: :desc).limit(per_page).offset([offset, 0].max)
+
+    if @posts.empty?
+      flash.now[:notice] = 'This user has no posts.'
+    else
+      @recent_comments = Comment.where(post_id: @posts)
+        .includes(:user)
+        .select('DISTINCT ON (post_id) *')
+    end
   end
 
   def show
@@ -27,6 +35,14 @@ class PostsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find_by(id: params[:id])
+    @post.destroy
+
+    redirect_to user_path(@user)
   end
 
   private

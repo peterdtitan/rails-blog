@@ -4,6 +4,7 @@
         <img src="<%= person.photo %>" alt="User Photo" class="h-[120px] w-[120px]"/>
         <div class="flex flex-col h-[120px] w-[300px] justify-between p-4 rounded-md bg-blue-200 border-1 border-black">
           <p class="text-2xl font-medium"><%= person.name %></p>
+            <span class="role-badge"><%= person.role || "member" %></span>
           <p class="ml-[50%] text-sm">Number of Posts: <%= person.posts_counter %></p>
         </div>
       </div>
