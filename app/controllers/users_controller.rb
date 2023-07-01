@@ -11,4 +11,11 @@ class UsersController < ApplicationController
 
     redirect_to users_path
   end
+
+  private
+
+  def load_and_authorize_user
+    @user = User.find(params[:id])
+    authorize! :read, @user
+  end
 end

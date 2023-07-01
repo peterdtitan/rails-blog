@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[index show] do
-    resources :posts, only: %i[index show create new] do
-      resources :comments, only: %i[create new]
+    resources :posts, only: %i[index show create new destroy] do
+      resources :comments, only: %i[create new destroy]
       resources :likes, only: %i[create new] do
         collection do
           get :create
